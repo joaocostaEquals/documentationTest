@@ -6,6 +6,13 @@ import org.apache.ibatis.cursor.Cursor;
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionManager;
+import org.eclipse.microprofile.openapi.annotations.OpenAPIDefinition;
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
+import org.eclipse.microprofile.openapi.annotations.info.Info;
+import org.eclipse.microprofile.openapi.annotations.media.Content;
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -27,6 +34,13 @@ public class SituacaoPagamentoVendaController {
     @Path("/{idHistRelatorio}")
     @GET
     @Transactional
+    @Operation(summary = "Retorna o relatório de Situação de Pagamento de Vendas")
+    @APIResponse(responseCode = "200", //
+            content = @Content(//
+                    mediaType = MediaType.APPLICATION_JSON, //
+                    schema = @Schema(//
+                            implementation = SituacaoPagamentoDeVenda.class, //
+                            type = SchemaType.ARRAY)))
     @Produces(MediaType.APPLICATION_JSON)
     public List<SituacaoPagamentoDeVenda> getUser(@PathParam("idHistRelatorio") Long idHistRelatorio) throws IOException {
         List<SituacaoPagamentoDeVenda> situacaoPagamentoDeVendas = new ArrayList<>();

@@ -14,15 +14,15 @@ import javax.ws.rs.core.Application;
                 @Tag(name="gasket", description="Operations related to gaskets")
         },
         info = @Info(
-                title="Example API",
+                title="Quarkus API Application",
                 version = "1.0.1",
                 contact = @Contact(
-                        name = "Example API Support",
-                        url = "http://exampleurl.com/contact",
-                        email = "techsupport@example.com"),
+                        name = "API team",
+                        url = "http://apiteam.com/contact",
+                        email = "apiteam@equals.com"),
                 license = @License(
                         name = "Apache 2.0",
                         url = "https://www.apache.org/licenses/LICENSE-2.0.html"))
 )
-public class ExampleApiApplication extends Application {
+public class QuarkusApiApplication extends Application {
 }

@@ -1,0 +1,282 @@
+{
+  "openapi" : "3.0.3",
+  "info" : {
+    "title" : "Quarkus API Application",
+    "contact" : {
+      "name" : "API team",
+      "url" : "http://apiteam.com/contact",
+      "email" : "apiteam@equals.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "https://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version" : "1.0.1"
+  },
+  "servers" : [ {
+    "url" : "http://localhost:8080",
+    "description" : "Auto generated value"
+  }, {
+    "url" : "http://0.0.0.0:8080",
+    "description" : "Auto generated value"
+  } ],
+  "tags" : [ {
+    "name" : "widget",
+    "description" : "Widget operations."
+  }, {
+    "name" : "gasket",
+    "description" : "Operations related to gaskets"
+  } ],
+  "paths" : {
+    "/hello" : {
+      "get" : {
+        "tags" : [ "Greeting Resource" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/situacaopagamentovenda/{idHistRelatorio}" : {
+      "get" : {
+        "tags" : [ "Situacao Pagamento Venda Controller" ],
+        "summary" : "Retorna o relatório de Situação de Pagamento de Vendas",
+        "parameters" : [ {
+          "name" : "idHistRelatorio",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "format" : "int64",
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/SituacaoPagamentoDeVenda"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/usuario/{id}" : {
+      "get" : {
+        "tags" : [ "Usuario Controller" ],
+        "summary" : "Retorna informações do usuário",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "format" : "int32",
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "id" : {
+                      "format" : "int64",
+                      "type" : "integer"
+                    },
+                    "nome" : {
+                      "type" : "string"
+                    },
+                    "email" : {
+                      "type" : "string"
+                    },
+                    "dataUltLogin" : {
+                      "$ref" : "#/components/schemas/LocalDateTime"
+                    },
+                    "ipUltAcesso" : {
+                      "type" : "string"
+                    },
+                    "senha" : {
+                      "type" : "string"
+                    },
+                    "ativo" : {
+                      "type" : "boolean"
+                    },
+                    "retaguarda" : {
+                      "type" : "boolean"
+                    },
+                    "dataSenha" : {
+                      "$ref" : "#/components/schemas/LocalDate"
+                    },
+                    "numeroTentativa" : {
+                      "format" : "int32",
+                      "type" : "integer"
+                    },
+                    "senhaBloqueada" : {
+                      "type" : "boolean"
+                    },
+                    "sexo" : {
+                      "type" : "string"
+                    },
+                    "tutorial" : {
+                      "format" : "byte",
+                      "type" : "string"
+                    },
+                    "dataCadastro" : {
+                      "$ref" : "#/components/schemas/LocalDate"
+                    },
+                    "dataTombamento" : {
+                      "$ref" : "#/components/schemas/LocalDate"
+                    },
+                    "statusTombamento" : {
+                      "type" : "string"
+                    },
+                    "numeroTelefone" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "LocalDate" : {
+        "format" : "date",
+        "type" : "string",
+        "example" : "2022-03-10"
+      },
+      "LocalDateTime" : {
+        "format" : "date-time",
+        "type" : "string",
+        "example" : "2022-03-10T12:15:50"
+      },
+      "SituacaoPagamentoDeVenda" : {
+        "type" : "object",
+        "properties" : {
+          "situacao" : {
+            "type" : "string"
+          },
+          "confirmacaoPagamento" : {
+            "type" : "string"
+          },
+          "situacaoConciliacao" : {
+            "type" : "string"
+          },
+          "numeroLote" : {
+            "format" : "int64",
+            "type" : "integer"
+          },
+          "numeroLoteUnico" : {
+            "format" : "int64",
+            "type" : "integer"
+          },
+          "idEstabelecimento" : {
+            "format" : "int64",
+            "type" : "integer"
+          },
+          "cnpj" : {
+            "type" : "string"
+          },
+          "codigoEstabelecimento" : {
+            "type" : "string"
+          },
+          "nomeFantasia" : {
+            "type" : "string"
+          },
+          "idAdquirente" : {
+            "format" : "int64",
+            "type" : "integer"
+          },
+          "nomeAdquirente" : {
+            "type" : "string"
+          },
+          "idFormaPagamento" : {
+            "type" : "string"
+          },
+          "nomeFormaPagamento" : {
+            "type" : "string"
+          },
+          "parcela" : {
+            "type" : "string"
+          },
+          "numeroAutorizacao" : {
+            "type" : "string"
+          },
+          "numeroNSU" : {
+            "format" : "int64",
+            "type" : "integer"
+          },
+          "numeroTID" : {
+            "type" : "string"
+          },
+          "numeroPedido" : {
+            "type" : "string"
+          },
+          "dataTransacao" : {
+            "$ref" : "#/components/schemas/LocalDate"
+          },
+          "horaTransacao" : {
+            "$ref" : "#/components/schemas/LocalDateTime"
+          },
+          "valorParcela" : {
+            "type" : "number"
+          },
+          "valorPagamentoPrevisto" : {
+            "type" : "number"
+          },
+          "valorComissao" : {
+            "type" : "number"
+          },
+          "taxaDesconto" : {
+            "type" : "number"
+          },
+          "valorLiquido" : {
+            "type" : "number"
+          },
+          "valorPago" : {
+            "type" : "number"
+          },
+          "dataPrevisaoPagamento" : {
+            "$ref" : "#/components/schemas/LocalDate"
+          },
+          "dataPagamentoRealizado" : {
+            "$ref" : "#/components/schemas/LocalDate"
+          },
+          "informacaoAdicional1" : {
+            "type" : "string"
+          },
+          "informacaoAdicional2" : {
+            "type" : "string"
+          },
+          "informacaoAdicional3" : {
+            "type" : "string"
+          },
+          "informacaoAdicional4" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}
