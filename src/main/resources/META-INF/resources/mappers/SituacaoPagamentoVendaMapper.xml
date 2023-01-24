@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="br.com.equals.conciliadorapi.situacaopagamentovenda.mapper.ISituacaoPagamentoVendaMapper">
+	
+	<resultMap id="SituacaoPagamentoVendaResult" type="br.com.equals.domain.SituacaoPagamentoDeVenda">
+		<result property="situacaoConciliacao" column="FLSITCONCILIACAO" />
+		<result property="numeroLote" column="NRLOTE" />
+		<result property="numeroLoteUnico" column="NRLOTEUNICO" />
+		<result property="idEstabelecimento" column="IDESTABELECIMENTO" />
+		<result property="idAdquirente" column="IDADQUIRENTE" />
+		<result property="numeroNSU" column="NRNSU" />
+		<result property="numeroAutorizacao" column="NRAUTORIZACAO" />
+		<result property="numeroTID" column="NRTID" />
+		<result property="dataTransacao" column="DTTRANSACAO" />
+		<result property="horaTransacao" column="HRTRANSACAO" />
+		<result property="taxaDesconto" column="TXDESCONTO" />
+		<result property="nomeFantasia" column="NMFANTASIA" />
+		<result property="cnpj" column="NRCNPJ" />
+		<result property="nomeAdquirente" column="NMADQUIRENTE" />
+		<result property="numeroPedido" column="NRPEDIDO" />
+		<result property="valorPagamentoPrevisto" column="VLPAGAMENTO" />
+		<result property="dataPrevisaoPagamento" column="DTVENCIMENTO" />
+		<result property="valorParcela" column="VLPARCELA" />
+		<result property="valorComissao" column="VLCOMISSAO" />
+		<result property="valorLiquido" column="VLLIQUIDO" />
+		<result property="valorPago" column="VLPAGO" />
+		<result property="informacaoAdicional1" column="DSINFOADICIONAL1" />
+		<result property="informacaoAdicional2" column="DSINFOADICIONAL2" />
+		<result property="informacaoAdicional3" column="DSINFOADICIONAL3" />
+		<result property="informacaoAdicional4" column="DSINFOADICIONAL4" />
+		<result property="idFormaPagamento" column="IDVENDAERPFORMAPAGAMENTO" />
+		<result property="parcela" column="NRPARCELA" />
+		<result property="dataPagamentoRealizado" column="DTPAGAMENTOREALIZADO" />
+	</resultMap>
+
+	<select id="pesquisarRelatorioPronto" resultMap="SituacaoPagamentoVendaResult" fetchSize="1000">
+		SELECT
+			FLSITCONCILIACAO,
+			NRLOTE,
+			NRLOTEUNICO,
+			IDESTABELECIMENTO,
+			IDADQUIRENTE,
+			NRNSU,
+			NRAUTORIZACAO,
+			NRTID,
+			NRPARCELAS,
+			DTTRANSACAO,
+			HRTRANSACAO,
+			TXDESCONTO,
+			NMFANTASIA,
+			NRESTABELECIMENTORETORNO,
+			NRCNPJ,
+			NMADQUIRENTE,
+			NRPEDIDO,
+			VLPAGAMENTO,
+			DSINFOADICIONAL1,
+			DSINFOADICIONAL2,
+			DSINFOADICIONAL3,
+			DSINFOADICIONAL4,
+			NRPARCELA,
+			VLPARCELA,
+			VLCOMISSAO,
+			VLLIQUIDO,
+			DTVENCIMENTO,
+			VLPAGO,
+			DTPAGAMENTOREALIZADO,
+			IDCLIENTE,
+			IDVENDAERPFORMAPAGAMENTO,
+			IDVENDA,
+			IDVENDAERPPAGAMENTO,
+			IDVENDAPARCELA,
+			IDREALIZADOPARCELA
+		FROM CRCRELSITPAGVENDAS
+		WHERE
+			IDHISTRELATORIO = #{idHistRelatorio}
+	</select>
+	
+</mapper>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="br.com.equals.conciliadorapi.usuario.mapper.IUsuarioMapper">
+
+    <resultMap id="UsuarioResult" type="br.com.equals.domain.Usuario">
+        <result property="id" column="IDUSUARIO"/>
+        <result property="nome" column="NMUSUARIO"/>
+        <result property="email" column="DSEMAIL"/>
+        <result property="dataUltLogin" column="DTULTLOGIN"/>
+        <result property="perfilAcesso.id" column="IDPERFILACESSO"/>
+        <result property="perfilAcesso.nome" column="DSPERFILACESSO"/>
+        <result property="ipUltAcesso" column="NRIPACESSO"/>
+        <result property="senha" column="DSSENHA"/>
+        <result property="ativo" column="FLATIVO"/>
+        <result property="senhaBloqueada" column="FLSENHABLOQUEADA"/>
+        <result property="retaguarda" column="FLRETAGUARDA"/>
+        <result property="dataSenha" column="DTSENHA"/>
+        <result property="numeroTentativa" column="NRTENTATIVA"/>
+        <result property="sexo" column="SEXO"/>
+        <result property="tutorial" column="FLTUTORIAL"/>
+        <result property="dataTombamento" column="DTTOMBAMENTO"/>
+        <result property="statusTombamento" column="CDSTATUSTOMBAMENTO"/>
+        <result property="dataCadastro" column="DTCADASTRO"/>
+        <result property="listClientes" column="LISTCLIENTES"/>
+        <result property="numeroTelefone" column="NRTELEFONE"/>
+    </resultMap>
+
+    <sql id="getUsuarioColumns">
+        PLTUSUARIO.IDUSUARIO,
+        PLTUSUARIO.NMUSUARIO,
+        PLTUSUARIO.DSEMAIL as DSEMAIL,
+        PLTUSUARIO.DTULTLOGIN,
+        PLTUSUARIO.NRIPACESSO,
+        PLTUSUARIO.DSSENHA,
+        PLTUSUARIO.FLATIVO,
+        PLTUSUARIO.FLSENHABLOQUEADA,
+        PLTUSUARIO.FLRETAGUARDA,
+        PLTUSUARIO.DTSENHA,
+        PLTUSUARIO.NRTENTATIVA,
+        PLTUSUARIO.IDIMAGEM,
+        PLTUSUARIO.SEXO,
+        PLTUSUARIO.FLTUTORIAL,
+        PLTUSUARIO.DTCADASTRO
+    </sql>
+
+    <select id="getUsuarioById" parameterType="int" resultMap="UsuarioResult">
+        select
+        <include refid="getUsuarioColumns"/>,
+        PLTUSUARIO.CDSTATUSTOMBAMENTO
+        from PLTUSUARIO
+        where idUsuario = #{id}
+    </select>
+
+</mapper>
